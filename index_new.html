@@ -1,0 +1,620 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Blackletterpress - nguồn thông tin và nội dung trực tuyến về tin tức, blog và các hoạt động cộng đồng.">
+    <title>Blackletterpress - Trang chủ</title>
+    <link rel="stylesheet" href="css/style.css" type="text/css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f7ce84;
+            margin: 0;
+            padding: 0;
+            color: #333;
+        }
+
+        .wrapper {
+            width: 1000px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .site-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+        }
+
+        .header-brand {
+            font-family: "Times New Roman", Times, serif;
+            font-size: 20px;
+            color: #4a1500;
+            white-space: nowrap;
+        }
+
+        .site-logo {
+            flex: 1;
+            text-align: center;
+        }
+
+        .site-logo span {
+            display: inline-block;
+            font-family: "Times New Roman", Times, serif;
+            font-size: 60px;
+            line-height: 1;
+            color: #2b0c00;
+            text-shadow: 2px 2px #d3a45c;
+        }
+
+        .header-search {
+            width: 250px;
+            text-align: right;
+            font-size: 12px;
+            color: #4a1500;
+        }
+
+        .header-search p {
+            margin: 0 0 5px;
+        }
+
+        .search-box {
+            display: flex;
+            justify-content: flex-end;
+            margin-top: 5px;
+        }
+
+        .search-box input[type="search"] {
+            box-sizing: border-box;
+            padding: 5px;
+            border: 1px solid #ccc;
+            width: 150px;
+        }
+
+        .btn-green {
+            background: linear-gradient(to bottom, #4db362, #1d8236);
+            color: white;
+            border: 1px solid #145c26;
+            padding: 5px 15px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        .content-layout {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 40px;
+            align-items: flex-start;
+        }
+
+        .sidebar {
+            width: 250px;
+            flex: 0 0 250px;
+        }
+
+        .nav-menu ul,
+        .gallery ul,
+        .posts-list,
+        .featured-list {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        .nav-menu a {
+            display: block;
+            background-color: #3e1201;
+            color: white;
+            text-decoration: none;
+            text-align: center;
+            padding: 15px;
+            margin-bottom: 10px;
+            font-weight: bold;
+            font-size: 18px;
+            border: 2px solid #5a1b02;
+        }
+
+        .nav-menu a:hover,
+        .nav-menu .selected a {
+            background-color: #5a1b02;
+        }
+
+        .sidebar-box {
+            background-color: #fce4b3;
+            border: 1px solid #dca860;
+            padding: 15px;
+            margin-bottom: 20px;
+        }
+
+        .sidebar-box h2,
+        .posts-box h2 {
+            margin-top: 0;
+            color: #5a1b02;
+            text-align: center;
+            border-bottom: 1px solid #dca860;
+            padding-bottom: 10px;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: space-around;
+            gap: 8px;
+        }
+
+        .social-links a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 44px;
+            height: 44px;
+            background-color: #d19a4e;
+            border-radius: 50%;
+            color: white;
+            text-decoration: none;
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        .posts-box {
+            background-color: #d8aa60;
+            padding: 15px;
+        }
+
+        .posts-box h2 {
+            color: #fff;
+            border-bottom-color: rgba(255, 255, 255, 0.35);
+        }
+
+        .posts-list li {
+            margin-bottom: 15px;
+        }
+
+        .posts-list h3 {
+            color: #fff;
+            margin: 0 0 8px;
+            font-size: 16px;
+        }
+
+        .posts-list p {
+            font-size: 12px;
+            color: #333;
+            line-height: 1.5;
+            margin: 0 0 6px;
+        }
+
+        .posts-box a {
+            font-size: 12px;
+            color: #3e1201;
+        }
+
+        .posts-box .btn-green {
+            width: 100%;
+            padding: 10px;
+            font-size: 16px;
+        }
+
+        .main-content {
+            flex: 1;
+            min-width: 0;
+            background-color: white;
+            padding: 30px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .page-intro h1 {
+            color: #4a1500;
+            font-size: 28px;
+            margin-top: 0;
+            margin-bottom: 12px;
+            font-family: "Times New Roman", Times, serif;
+        }
+
+        .page-intro p {
+            font-size: 14px;
+            line-height: 1.6;
+            color: #444;
+            margin-bottom: 10px;
+        }
+
+        .gallery {
+            margin-bottom: 25px;
+        }
+
+        .gallery>figure,
+        .media-gallery figure {
+            margin: 0 0 15px;
+        }
+
+        .gallery img,
+        .media-gallery img,
+        .video-poster {
+            width: 100%;
+            height: auto;
+            display: block;
+            border-radius: 3px;
+        }
+
+        .gallery figcaption,
+        .media-gallery figcaption {
+            font-size: 12px;
+            color: #666;
+            font-style: italic;
+            margin-top: 5px;
+            text-align: left;
+        }
+
+        .gallery-thumbnails {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+        }
+
+        .gallery-thumbnails li img {
+            width: 100%;
+            aspect-ratio: 4 / 3;
+            object-fit: cover;
+        }
+
+        .content-section {
+            margin-bottom: 25px;
+        }
+
+        .content-section h2 {
+            font-size: 18px;
+            color: #2b0c00;
+            margin: 0 0 10px;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 5px;
+        }
+
+        .content-section p {
+            font-size: 14px;
+            line-height: 1.6;
+            color: #444;
+            margin-bottom: 10px;
+        }
+
+        figure {
+            margin: 0;
+        }
+
+        figcaption {
+            font-size: 12px;
+            color: #666;
+            font-style: italic;
+            margin-top: 5px;
+            text-align: left;
+        }
+
+        .media-block video,
+        .media-block audio {
+            width: 100%;
+            margin-top: 5px;
+            border-radius: 4px;
+        }
+
+        .map-container iframe {
+            width: 100%;
+            height: 250px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        .topic-footer {
+            font-size: 12px;
+            color: #555;
+            margin-top: 20px;
+            padding-top: 10px;
+            border-top: 1px solid #eee;
+        }
+
+        .site-footer {
+            display: flex;
+            justify-content: space-between;
+            gap: 20px;
+            padding: 40px 0;
+            border-top: 1px dotted #a87e41;
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        .footer-col {
+            width: 22%;
+            font-size: 11px;
+            color: #555;
+            line-height: 1.5;
+        }
+
+        .icon-circle {
+            width: 50px;
+            height: 50px;
+            background-color: #d19a4e;
+            border-radius: 50%;
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 15px;
+            color: white;
+            font-size: 24px;
+        }
+
+        .copyright {
+            text-align: center;
+            font-size: 10px;
+            color: #777;
+            padding: 20px 0;
+        }
+
+        @media (max-width: 1040px) {
+            .wrapper {
+                width: auto;
+                max-width: 1000px;
+            }
+        }
+
+        @media (max-width: 800px) {
+
+            .site-header,
+            .content-layout,
+            .site-footer {
+                flex-direction: column;
+            }
+
+            .header-search,
+            .sidebar {
+                width: 100%;
+                flex-basis: auto;
+            }
+
+            .header-search {
+                text-align: left;
+            }
+
+            .search-box {
+                justify-content: flex-start;
+            }
+
+            .main-content {
+                width: 100%;
+                box-sizing: border-box;
+            }
+
+            .footer-col {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wrapper">
+        <header class="site-header">
+            <div class="header-brand">Blackletterpress</div>
+
+            <div class="site-logo" aria-label="BLP">
+                <span>BLP</span>
+            </div>
+
+            <div class="header-search">
+                <p>Your online source of trusted news</p>
+                <form class="search-box" action="#" method="get" role="search">
+                    <label for="site-search" class="visually-hidden">Tìm kiếm</label>
+                    <input id="site-search" name="q" type="search" placeholder="Enter search query"
+                        aria-label="Enter search query">
+                    <button type="submit" class="btn-green">Search</button>
+                </form>
+            </div>
+        </header>
+
+        <div class="content-layout">
+            <aside class="sidebar" aria-label="Thanh bên">
+                <nav class="nav-menu" aria-label="Điều hướng chính">
+                    <ul>
+                        <li class="selected"><a href="index_new.html" aria-current="page">Home</a></li>
+                        <li><a href="about.html">About</a></li>
+                        <li><a href="news.html">News</a></li>
+                        <li><a href="blog.html">Blog</a></li>
+                    </ul>
+                </nav>
+
+                <section class="sidebar-box" aria-labelledby="connect-title">
+                    <h2 id="connect-title">Connect with us:</h2>
+                    <div class="social-links">
+                        <a href="http://freewebsitetemplates.com/go/twitter/" target="_blank" rel="noopener noreferrer"
+                            aria-label="Twitter">🐦</a>
+                        <a href="http://freewebsitetemplates.com/go/facebook/" target="_blank" rel="noopener noreferrer"
+                            aria-label="Facebook">📘</a>
+                        <a href="http://freewebsitetemplates.com/go/googleplus/" target="_blank"
+                            rel="noopener noreferrer" aria-label="Google Plus">G+</a>
+                    </div>
+                </section>
+
+                <section class="posts-box" aria-labelledby="posts-title">
+                    <h2 id="posts-title">Latest posts</h2>
+                    <ul class="posts-list">
+                        <li>
+                            <h3>Ngày hội Công nghệ Xanh 2026</h3>
+                            <p>Ngày hội quy tụ các chuyên gia và doanh nghiệp theo đuổi giải pháp công nghệ bền vững.
+                            </p>
+                            <a href="news.html">Read more</a>
+                        </li>
+                        <li>
+                            <h3>Trò chuyện cùng diễn giả</h3>
+                            <p>Nghe lại phỏng vấn các khách mời chính và tìm hiểu thêm về các hoạt động của chương
+                                trình.</p>
+                            <a href="news.html">Read more</a>
+                        </li>
+                    </ul>
+                    <a href="news.html" class="btn-green"
+                        style="display:block; box-sizing:border-box; text-align:center; text-decoration:none; margin-top:5px;">View
+                        More</a>
+                </section>
+            </aside>
+
+            <main class="main-content">
+                <article>
+                    <header class="page-intro">
+                        <h1>This website template has been designed by <a
+                                href="http://www.freewebsitetemplates.com/">Free Website Templates</a> for you, for
+                            <em>free</em>.</h1>
+                    </header>
+
+                    <section class="gallery" aria-labelledby="gallery-title">
+                        <h2 id="gallery-title" class="visually-hidden">Gallery</h2>
+                        <figure>
+                            <img src="https://images.unsplash.com/photo-1511578314322-379afb476865?auto=format&amp;fit=crop&amp;w=1000&amp;q=85"
+                                alt="Hội trường chính trong một sự kiện cộng đồng">
+                            <figcaption>Hội trường chính trong ngày khai mạc sự kiện.</figcaption>
+                        </figure>
+                        <ul class="gallery-thumbnails">
+                            <li>
+                                <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&amp;fit=crop&amp;w=500&amp;q=85"
+                                    alt="Nhóm người thảo luận tại sự kiện">
+                            </li>
+                            <li>
+                                <img src="https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&amp;fit=crop&amp;w=500&amp;q=85"
+                                    alt="Khu vực trưng bày sản phẩm tại sự kiện">
+                            </li>
+                            <li>
+                                <img src="https://images.unsplash.com/photo-1511578314322-379afb476865?auto=format&amp;fit=crop&amp;w=500&amp;q=85"
+                                    alt="Khán giả trong hội trường sự kiện">
+                            </li>
+                            <li>
+                                <img src="https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&amp;fit=crop&amp;w=500&amp;q=85"
+                                    alt="Không gian trưng bày và giao lưu">
+                            </li>
+                            <li>
+                                <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&amp;fit=crop&amp;w=500&amp;q=85"
+                                    alt="Các thành viên trao đổi tại sự kiện">
+                            </li>
+                            <li>
+                                <img src="https://images.unsplash.com/photo-1511578314322-379afb476865?auto=format&amp;fit=crop&amp;w=500&amp;q=85"
+                                    alt="Toàn cảnh không gian tổ chức chương trình">
+                            </li>
+                        </ul>
+                    </section>
+
+                    <section class="content-section">
+                        <h2>Giới thiệu sự kiện</h2>
+                        <p>
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec eleifend ligula vel velit
+                            varius fermentum. Nullam porta hendrerit metus id hendrerit. Maecenas consequat neque sed
+                            tellus commodo ultrices et et est. Maecenas non justo vitae dui vulputate rutrum sed a
+                            lacus. Pellentesque dapibus, felis eget ornare ultrices, est est imperdiet magna, id
+                            ultrices odio leo sed erat. Maecenas nec est egestas ipsum bibendum iaculis. Nulla accumsan
+                            posuere nisl. Cras eu consectetur turpis. Etiam condimentum, lorem ac imperdiet ultricies,
+                            velit arcu feugiat nunc, vel tristique sapien diam quis velit. Maecenas non metus augue, sit
+                            amet tristique libero. In placerat urna quis orci hendrerit pretium. Donec luctus, magna
+                            rhoncus pretium tempor, odio orci consequat turpis, id rutrum elit tellus eu odio. Nunc
+                            sapien libero, faucibus quis vehicula quis, interdum eu mauris.
+                        </p>
+                        <p>
+                            Cras eu consectetur turpis. Etiam condimentum, lorem ac imperdiet ultricies, velit arcu
+                            feugiat nunc, vel tristique sapien diam quis velit. Maecenas non metus augue, sit amet
+                            tristique libero. In placerat urna quis orci hendrerit pretium. Donec luctus, magna rhoncus
+                            pretium tempor, odio orci consequat turpis, id rutrum elit tellus eu odio. Nunc sapien
+                            libero, faucibus quis vehicula quis, interdum eu mauris.
+                        </p>
+                    </section>
+
+                    <section class="content-section media-block">
+                        <h2>Video giới thiệu</h2>
+                        <figure>
+                            <video controls
+                                poster="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&amp;fit=crop&amp;w=1000&amp;q=85">
+                                <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4">
+                                Trình duyệt của bạn không hỗ trợ thẻ video HTML5.
+                            </video>
+                            <figcaption>Video minh họa không gian và hoạt động tại sự kiện.</figcaption>
+                        </figure>
+                    </section>
+
+                    <section class="content-section media-block">
+                        <h2>Podcast: Trò chuyện cùng diễn giả</h2>
+                        <p>Nghe lại phỏng vấn các khách mời chính của chương trình.</p>
+                        <audio controls>
+                            <source src="https://www.w3schools.com/html/horse.mp3" type="audio/mpeg">
+                            Trình duyệt của bạn không hỗ trợ thẻ audio HTML5.
+                        </audio>
+                    </section>
+
+                    <section class="content-section">
+                        <h2>Địa điểm tổ chức</h2>
+                        <p>Sự kiện diễn ra tại Hà Nội. Xem bản đồ đường đi bên dưới:</p>
+                        <div class="map-container">
+                            <iframe
+                                src="https://maps.google.com/maps?q=Hanoi&amp;t=&amp;z=13&amp;ie=UTF8&amp;iwloc=&amp;output=embed"
+                                title="Bản đồ Hà Nội" allowfullscreen loading="lazy">
+                            </iframe>
+                        </div>
+                    </section>
+
+                    <section class="content-section media-gallery">
+                        <h2>Hình ảnh các mùa trước</h2>
+                        <figure>
+                            <img src="https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&amp;fit=crop&amp;w=1000&amp;q=85"
+                                alt="Khu trưng bày sản phẩm xanh">
+                            <figcaption>Khu trưng bày sản phẩm xanh mùa 2025.</figcaption>
+                        </figure>
+                    </section>
+
+                    <footer class="topic-footer">
+                        <p>Chủ đề: công nghệ xanh, phát triển bền vững</p>
+                    </footer>
+                </article>
+            </main>
+        </div>
+
+        <footer class="site-footer">
+            <section class="footer-col">
+                <div class="icon-circle" aria-hidden="true">🏠</div>
+                <p>This website template has been designed by Free Website Templates for you, for free. You can replace
+                    all this text with your own text. Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam
+                    nonummy nibh euismod.</p>
+            </section>
+            <section class="footer-col">
+                <div class="icon-circle" aria-hidden="true">☕</div>
+                <p>This website template has been designed by Free Website Templates for you, for free. You can replace
+                    all this text with your own text. Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam
+                    nonummy nibh euismod.</p>
+            </section>
+            <section class="footer-col">
+                <div class="icon-circle" aria-hidden="true">🌐</div>
+                <p>This website template has been designed by Free Website Templates for you, for free. You can replace
+                    all this text with your own text. Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam
+                    nonummy nibh euismod.</p>
+            </section>
+            <section class="footer-col">
+                <div class="icon-circle" aria-hidden="true">✏️</div>
+                <p>This website template has been designed by Free Website Templates for you, for free. You can replace
+                    all this text with your own text. Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam
+                    nonummy nibh euismod.</p>
+            </section>
+        </footer>
+
+        <div class="copyright">
+            © Copyright © 2011.Company name all rights reserved
+        </div>
+    </div>
+
+    <style>
+        .visually-hidden {
+            position: absolute !important;
+            width: 1px !important;
+            height: 1px !important;
+            padding: 0 !important;
+            margin: -1px !important;
+            overflow: hidden !important;
+            clip: rect(0, 0, 0, 0) !important;
+            white-space: nowrap !important;
+            border: 0 !important;
+        }
+    </style>
+</body>
+
+</html>
