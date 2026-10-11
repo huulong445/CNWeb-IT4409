@@ -31,7 +31,10 @@ a {
 }
 
 .page {
-  overflow-x: hidden;
+  /* SỬA: overflow-x: hidden biến .page thành scroll container -> sticky của
+	   header bám vào .page (không cuộn) nên menu KHÔNG dính.
+	   overflow-x: clip vẫn cắt tràn ngang nhưng không tạo scroll container. */
+  overflow-x: clip;
 }
 
 /* ===== Header / thanh điều hướng ===== */
@@ -144,7 +147,8 @@ a {
   flex: 0 0 calc((100% - 48px) / 3);
   min-height: 320px;
   position: relative;
-  box-sizing: content-box;
+  /* SỬA: bỏ box-sizing: content-box (ghi đè border-box) khiến mỗi thẻ rộng
+	   thêm 34px (padding + border) -> thẻ thứ 3 rớt xuống hàng dưới. */
   background: #fff;
   border: 1px solid #e0d8c8;
   border-radius: 8px;
@@ -162,6 +166,7 @@ a {
   font-weight: bold;
   padding: 4px 10px;
   border-radius: 20px;
+  z-index: 3; /* SỬA: ảnh có z-index: 2 đang đè lên nhãn -> nâng nhãn lên trên ảnh */
 }
 
 .card img {
